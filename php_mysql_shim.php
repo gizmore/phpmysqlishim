@@ -45,6 +45,20 @@ if (!function_exists('mysql_query'))
 	}
 }
 
+if (!function_exists('mysql_unbuffered_query'))
+{
+	function mysql_unbuffered_query($query, $link=null)
+	{
+		global $mysqli_connection;
+		$link = $link ? $link : $mysqli_connection;
+		if (mysqli_real_query($link, $query))
+		{
+			return mysqli_use_result($link);
+		}
+		return false;
+	}
+}
+
 if (!function_exists('mysql_fetch_row'))
 {
 	function mysql_fetch_row($result)
