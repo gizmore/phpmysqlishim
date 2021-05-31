@@ -3,6 +3,11 @@
 ### Shim mysql => mysqli ###
 ############################
 global $mysqli_connection;
+
+if (!defined('MYSQL_ASSOC')) define('MYSQL_ASSOC', 1);
+if (!defined('MYSQL_NUM')) define('MYSQL_NUM', 2);
+if (!defined('MYSQL_BOTH')) define('MYSQL_BOTH', 3);
+
 if (!function_exists('mysql_connect'))
 {
     function mysql_connect($host, $user, $pass)
